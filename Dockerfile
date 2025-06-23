@@ -1,8 +1,6 @@
-FROM python:3.10-slim
+FROM debian:bullseye-slim
 
-# Устанавливаем git и pip-зависимости
-RUN apt-get update && apt-get install -y git && \
-    pip install --no-cache-dir git+https://github.com/CartelShadowsocks/shadowsocks-py3.git
+RUN apt-get update && \
+    apt-get install -y shadowsocks-libev
 
-# Запускаем Shadowsocks-сервер
-CMD ["ssserver", "-p", "8388", "-k", "02048888", "-m", "aes-256-gcm"]
+CMD ["ss-server", "-s", "0.0.0.0", "-p", "8388", "-k", "твой_пароль", "-m", "aes-256-gcm", "-u"]
