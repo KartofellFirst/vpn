@@ -1,8 +1,7 @@
 services:
   - type: web
-    name: ss-proxy
-    env: python
+    name: shadowsocks
+    env: docker
     plan: free
     region: frankfurt
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "python server.py"
+    dockerfilePath: ./Dockerfile
