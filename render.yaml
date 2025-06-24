@@ -1,7 +1,6 @@
 services:
   - type: web
     name: 3proxy
-    env: docker
     plan: free
     region: frankfurt
     image: ghcr.io/tarampampam/3proxy:1.8.2
