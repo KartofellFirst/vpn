@@ -1,4 +1,8 @@
-FROM outline/shadowbox
+FROM alpine
 
-# Устанавливаем временную зону (по желанию)
-ENV TZ=Europe/Moscow
+RUN apk add --no-cache brook && \
+    mkdir /app
+
+WORKDIR /app
+
+CMD ["brook", "server", "-l", ":9999", "-p", "supersecret"]
