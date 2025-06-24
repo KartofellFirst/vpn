@@ -1,13 +1,12 @@
 services:
   - type: web
-    name: wireguard-server
+    name: outline-vpn
     env: docker
     dockerfilePath: ./Dockerfile
-    plan: starter
-    autoDeploy: false
-    volumes:
-      - name: wg-config
-        mountPath: /config
-volumes:
-  - name: wg-config
-    path: ./config
+    plan: free
+    region: frankfurt
+    envVars:
+      - key: ACCESS_KEY
+        generateValue: true
+    domains:
+      - auto
