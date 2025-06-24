@@ -1,12 +1,11 @@
 services:
   - type: web
-    name: outline-vpn
+    name: brook-vpn
     env: docker
-    dockerfilePath: ./Dockerfile
     plan: free
+    dockerfilePath: ./Dockerfile
     region: frankfurt
+    autoDeploy: true
     envVars:
-      - key: ACCESS_KEY
-        generateValue: true
-    domains:
-      - auto
+      - key: TZ
+        value: Europe/Moscow
