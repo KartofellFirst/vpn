@@ -1,0 +1,12 @@
+:443 {
+  tls internal
+
+  forward_proxy {
+    basic_auth user supersecret
+    hide_ip
+    hide_via
+    probe_resistance
+  }
+
+  respond "Proxy is running"
+}
