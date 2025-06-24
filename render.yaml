@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: 3proxy
+    plan: free
+    region: frankfurt
+    image: ghcr.io/tarampampam/3proxy:1.8.2
+    envVars:
+      - key: PROXY_LOGIN
+        value: nikita
+      - key: PROXY_PASSWORD
+        value: 02048888
+      - key: PROXY_PORT
+        value: "3128"
+      - key: SOCKS_PORT
+        value: "1080"
