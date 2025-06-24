@@ -8,4 +8,4 @@ FROM caddy:2.7.6
 COPY --from=builder /usr/bin/caddy /usr/bin/caddy
 COPY Caddyfile /etc/caddy/Caddyfile
 
-CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]
+ENTRYPOINT ["/bin/sh", "-c", "/usr/bin/caddy run --config /etc/caddy/Caddyfile --adapter caddyfile"]
