@@ -4,6 +4,14 @@ services:
     env: docker
     plan: free
     region: frankfurt
-    dockerContext: .
-    dockerfilePath: ./Dockerfile
-    autoDeploy: true
+    dockerfilePath: ""
+    image: ghcr.io/tarampampam/3proxy:1.8.2
+    envVars:
+      - key: PROXY_LOGIN
+        value: user
+      - key: PROXY_PASSWORD
+        value: password
+      - key: PROXY_PORT
+        value: "3128"
+      - key: SOCKS_PORT
+        value: "1080"
