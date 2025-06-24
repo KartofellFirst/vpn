@@ -1,11 +1,13 @@
-FROM caddy:2.7.6-builder AS builder
+FROM alpine:latest
 
-RUN xcaddy build \
-    --with github.com/caddyserver/forwardproxy@caddy2
+RUN apk add --no-cache git build-base curl && \
+    git clone https://github.com/z3APA3A/3proxy.git /opt/3proxy && \
+    cd /opt/3proxy && make -f Makefile.Linux && \
+    mkdir -p /usr/local/etc/3proxy && \
+    cp src/3proxy /usr/local/bin/3proxy
 
-FROM caddy:2.7.6
+COPY ./3proxy.cfg /usr/local/etc/3proxy/3proxy.cfg
 
-COPY --from=builder /usr/bin/caddy /usr/bin/caddy
-COPY Caddyfile /etc/caddy/Caddyfile
+EXPOSE 3128
 
-ENTRYPOINT ["/bin/sh", "-c", "/usr/bin/caddy run --config /etc/caddy/Caddyfile --adapter caddyfile"]
+CMD ["/usr/local/bin/3proxy", "/usr/local/etc/3proxy/3proxy.cfg"]
