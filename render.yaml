@@ -3,7 +3,8 @@ services:
     name: 3proxy
     plan: free
     region: frankfurt
-    image: ghcr.io/tarampampam/3proxy:1.8.2
+    image:
+      name: ghcr.io/tarampampam/3proxy:1.8.2
     envVars:
       - key: PROXY_LOGIN
         value: nikita
