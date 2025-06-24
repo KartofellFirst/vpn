@@ -1,7 +1,9 @@
-FROM alpine
+FROM caddy:builder AS builder
 
-RUN apk add --no-cache curl && \
-    curl -L -o /usr/local/bin/brook https://github.com/txthinking/brook/releases/latest/download/brook_linux_amd64 && \
-    chmod +x /usr/local/bin/brook
+RUN xcaddy build \
+    --with github.com/caddyserver/forwardproxy@caddy2
 
-CMD ["brook", "wsserver", "-l", ":443", "-p", "supersecret"]
+FROM caddy:latest
+
+COPY --from=builder /usr/bin/caddy /usr/bin/caddy
+COPY Caddyfile /etc/caddy/Caddyfile
