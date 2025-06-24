@@ -1,7 +1,15 @@
 services:
   - type: web
-    name: shadowsocks
+    name: wireguard-server
     env: docker
-    plan: free
+    plan: starter
     region: frankfurt
     dockerfilePath: ./Dockerfile
+    autoDeploy: false
+    envVars:
+      - key: PUID
+        value: "1000"
+      - key: PGID
+        value: "1000"
+      - key: TZ
+        value: Europe/Moscow
