@@ -2,14 +2,12 @@ services:
   - type: web
     name: wireguard-server
     env: docker
-    plan: starter
-    region: frankfurt
     dockerfilePath: ./Dockerfile
+    plan: starter
     autoDeploy: false
-    envVars:
-      - key: PUID
-        value: "1000"
-      - key: PGID
-        value: "1000"
-      - key: TZ
-        value: Europe/Moscow
+    volumes:
+      - name: wg-config
+        mountPath: /config
+volumes:
+  - name: wg-config
+    path: ./config
