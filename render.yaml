@@ -4,7 +4,6 @@ services:
     env: docker
     plan: free
     region: frankfurt
-    dockerfilePath: ""
     image: ghcr.io/tarampampam/3proxy:1.8.2
     envVars:
       - key: PROXY_LOGIN
