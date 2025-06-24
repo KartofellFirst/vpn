@@ -1,8 +1,9 @@
 services:
   - type: web
-    name: caddy-proxy
+    name: 3proxy
     env: docker
-    dockerfilePath: ./Dockerfile
     plan: free
     region: frankfurt
+    dockerContext: .
+    dockerfilePath: ./Dockerfile
     autoDeploy: true
